@@ -56,7 +56,7 @@ CREATE TABLE products(
     name VARCHAR(50),
     description VARCHAR(100),
     sku INTEGER,
-    unit_price DECIMAL(5, 2),
+    unit_price DECIMAL(10, 2),
     status_id UUID NOT NULL REFERENCES product_statuses(id)
 );
 
