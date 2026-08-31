@@ -1,0 +1,36 @@
+name: SQL-fundamentals
+
+services:
+  database:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+
+    container_name: database
+
+    environment:
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: supplier
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+
+    container_name: pgadmin
+
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+
+    ports:
+      - "5050:80"
+
+volumes:
+  data:
+    name: data
