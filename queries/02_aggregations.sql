@@ -24,12 +24,7 @@ INNER JOIN products AS p ON p.id = o.product_id
 GROUP BY product
 ORDER BY product;
 
---number of assigned orders per employee
-SELECT CONCAT(e.first_name, ' ', e.last_name) AS employee, count(o.assigned_to) as assigned_orders
-FROM orders as o
-RIGHT JOIN employees AS e on e.id = o.assigned_to
-GROUP BY employee
-ORDER BY assigned_orders DESC;
+
 
 --average salary per deparment
 SELECT d.name as department, ROUND(AVG(e.salary), 2) AS average_salary
